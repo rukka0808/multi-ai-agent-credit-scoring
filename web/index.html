@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 여신 심사</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --toss-blue: #3182f6;
+    --toss-blue-dark: #1b64da;
+    --bg: #f9fafb;
+    --text: #191f28;
+    --gray: #8b95a1;
+    --border: #e5e8eb;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
+                 'Pretendard', 'Malgun Gothic', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .card {
+    background: #fff;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 24px;
+    padding: 40px 28px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  }
+  .badge {
+    display: inline-block;
+    background: #e8f3ff;
+    color: var(--toss-blue);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .subtitle {
+    font-size: 15px;
+    color: var(--gray);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+  .field { margin-bottom: 20px; }
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  input {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    background: #f2f4f6;
+    border-radius: 14px;
+    color: var(--text);
+    transition: background 0.15s, box-shadow 0.15s;
+  }
+  input::placeholder { color: #b0b8c1; }
+  input:focus {
+    outline: none;
+    background: #fff;
+    box-shadow: 0 0 0 2px var(--toss-blue);
+  }
+  .btn {
+    width: 100%;
+    padding: 17px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--toss-blue);
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background 0.15s, transform 0.05s;
+  }
+  .btn:hover { background: var(--toss-blue-dark); }
+  .btn:active { transform: scale(0.98); }
+  .btn:disabled { background: #d1d6db; cursor: not-allowed; }
+  .status {
+    margin-top: 24px;
+    padding: 16px;
+    border-radius: 14px;
+    font-size: 14px;
+    line-height: 1.6;
+    display: none;
+  }
+  .status.show { display: block; }
+  .status.loading { background: #f2f4f6; color: var(--gray); }
+  .status.success { background: #e8f7ee; color: #15803d; }
+  .status.error { background: #fdeded; color: #d92d20; }
+  .spinner {
+    display: inline-block;
+    width: 16px; height: 16px;
+    border: 2px solid #d1d6db;
+    border-top-color: var(--toss-blue);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .link {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--toss-blue);
+    font-weight: 600;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <span class="badge">AI 여신 심사</span>
+    <h1>기업 재무를<br>1분 만에 심사해요</h1>
+    <p class="subtitle">회사명을 입력하면 DART 데이터를 분석해<br>심사 보고서를 만들어드려요</p>
+
+    <form id="form">
+      <div class="field">
+        <label for="company">회사명</label>
+        <input type="text" id="company" placeholder="예: 삼성전자" required>
+      </div>
+      <div class="field">
+        <label for="year">사업연도</label>
+        <input type="number" id="year" placeholder="2023" value="2023">
+      </div>
+      <button type="submit" class="btn" id="submitBtn">심사 시작하기</button>
+    </form>
+
+    <div class="status" id="status"></div>
+  </div>
+
+<script>
+const form = document.getElementById('form');
+const btn = document.getElementById('submitBtn');
+const status = document.getElementById('status');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const company = document.getElementById('company').value.trim();
+  const year = document.getElementById('year').value.trim() || '2023';
+
+  if (!company) return;
+
+  btn.disabled = true;
+  btn.textContent = '심사 중...';
+  status.className = 'status show loading';
+  status.innerHTML = '<span class="spinner"></span>DART 데이터를 분석하고 있어요. 30초~1분 정도 걸려요.';
+
+  try {
+    const res = await fetch('/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ company, year })   // sector 제거
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      status.className = 'status show success';
+      status.innerHTML =
+        `심사가 완료됐어요! 등급 <b>${data.grade}</b> · ${data.opinion}<br>` +
+        `<a class="link" href="${data.report_url}" target="_blank">보고서 보기 →</a>`;
+    } else {
+      status.className = 'status show error';
+      status.textContent = '심사 실패: ' + data.reason;
+    }
+  } catch (err) {
+    status.className = 'status show error';
+    status.textContent = '서버 연결 오류: ' + err.message;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '심사 시작하기';
+  }
+});
+</script>
+</body>
+</html>

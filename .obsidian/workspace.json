@@ -1,0 +1,198 @@
+{
+  "main": {
+    "id": "7a3c9fcfbcdc2e90",
+    "type": "split",
+    "children": [
+      {
+        "id": "8cd3a186ce124d83",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "effab5fc7b07f3e1",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "새 탭"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "bb8ce34dfe471207",
+    "type": "split",
+    "children": [
+      {
+        "id": "209c3c0e476bb420",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f42c5cd8231970cf",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "파일 탐색기"
+            }
+          },
+          {
+            "id": "47c7719f74db3b58",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "검색"
+            }
+          },
+          {
+            "id": "55d6e02ef9329422",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "북마크"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "874ef1ece206aab7",
+    "type": "split",
+    "children": [
+      {
+        "id": "532540fa0b4e6ec5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "79aeebe31a9ea3cb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "백링크"
+            }
+          },
+          {
+            "id": "1a7163c4e1ecb670",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "나가는 링크"
+            }
+          },
+          {
+            "id": "3bb06187e27e11bf",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "태그"
+            }
+          },
+          {
+            "id": "53b1acc2c442644f",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "모든 속성"
+            }
+          },
+          {
+            "id": "e4e7fc9d13fc55bf",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "개요"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:빠른 전환기 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false,
+      "bases:새 베이스 생성하기": false
+    }
+  },
+  "active": "f42c5cd8231970cf",
+  "lastOpenFiles": [
+    "output/여신심사보고서_부산은행_2024.html",
+    "wiki/overview.md",
+    "wiki/macro.md",
+    "wiki/risk.md",
+    "wiki/index.md",
+    "wiki/financials.md",
+    "raw/부산은행_2024.json",
+    "output/여신심사보고서_금양_2024.html",
+    "raw/금양_2024.json",
+    "web/index.html",
+    "app.py",
+    "financial_metrics.py",
+    "web/index_main.html",
+    "web/index.html.txt",
+    "web/새 텍스트 문서.txt",
+    "web"
+  ]
+}
