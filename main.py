@@ -46,23 +46,10 @@ def main():
         year = params["year"]
         sector = params["sector"]
 
-    # 업종 기반 매크로 정보 분기 설정
-    if "삼성전자" in company_name or "반도체" in sector:
-        macro = macro_collector.collect_macro(base_rate="3.50%")
-        if not sector:
-            sector = "반도체"
-    elif "현대차" in company_name or "현대자동차" in company_name or "자동차" in sector:
-        macro = {
-            "기준금리": "3.50%",
-            "원/달러 환율": "약 1,300원",
-            "업황": "친환경차 및 SUV 판매 호조, 차량용 반도체 공급망 개선",
-        }
-        if not sector:
-            sector = "자동차"
-    else:
-        macro = macro_collector.collect_macro(base_rate="3.50%")
-        if not sector:
-            sector = "일반"
+    # 업종 기반 매크로 정보 분기 설정(삼성전자 테스트)
+    macro = macro_collector.collect_macro(base_rate="3.50%")
+    if not sector:
+        sector = "일반"
 
     print(f"\n=== 여신 심사 시작: {company_name} ({year}) ===")
     print(f"  - 업종: {sector}")
