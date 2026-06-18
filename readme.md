@@ -3,6 +3,8 @@
 ### 작성자 : 부산은행 허원재
 
 > DART 전자공시 데이터 기반, **정량 분석(코드)과 정성 분석(LLM)의 권한을 분리**하여 멀티 에이전트의 신뢰도 붕괴를 구조적으로 완화한 여신 심사 보고서 생성 시스템
+<img width="2000" height="808" alt="그림1" src="https://github.com/user-attachments/assets/23841c17-65f6-4927-9675-374c6eaf5ccf" />
+
 
 ## 목차
 
